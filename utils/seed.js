@@ -12,6 +12,14 @@ async function seedDatabase() {
       {
         username: 'bobbob',
         email: 'bobbob@gmail.com',
+      },
+      {
+        username: 'janejane',
+        email: 'janejane@gmail.com',
+      },
+      {
+        username: 'alicealice',
+        email: 'alicealice@gmail.com',
       }
       
     ];
