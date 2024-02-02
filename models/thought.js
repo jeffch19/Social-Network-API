@@ -25,7 +25,7 @@ thoughtSchema.virtual('reactionCount').get(function () {
 
 const Thought = model('Thought', thoughtSchema);
 
-module.exports = Thought;
+
 
 // **Thought**:
 
@@ -51,3 +51,49 @@ module.exports = Thought;
 // Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
 
 // ---
+
+const reactionSchema = new Schema({
+  readtionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Schema.Types.ObjectId()
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: createdAtVal => dateFormat(createdAtVal)
+  }
+}); 
+
+
+// **Reaction** (SCHEMA ONLY)
+
+// * `reactionId`
+//   * Use Mongoose's ObjectId data type
+//   * Default value is set to a new ObjectId
+
+// * `reactionBody`
+//   * String
+//   * Required
+//   * 280 character maximum
+
+// * `username`
+//   * String
+//   * Required
+
+// * `createdAt`
+//   * Date
+//   * Set default value to the current timestamp
+//   * Use a getter method to format the timestamp on query
+
+
+module.exports = Thought;
