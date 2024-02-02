@@ -1,4 +1,66 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = (date) => {
+ return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZoneName: 'short'
+ }).format(date);
+};
+
+
+const reactionSchema = new Schema({
+  reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Schema.Types.ObjectId()
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: createdAtVal => dateFormat(createdAtVal)
+  }
+}); 
+
+
+// **Reaction** (SCHEMA ONLY)
+
+// * `reactionId`
+//   * Use Mongoose's ObjectId data type
+//   * Default value is set to a new ObjectId
+
+// * `reactionBody`
+//   * String
+//   * Required
+//   * 280 character maximum
+
+// * `username`
+//   * String
+//   * Required
+
+// * `createdAt`
+//   * Date
+//   * Set default value to the current timestamp
+//   * Use a getter method to format the timestamp on query
+
+
+
+
+
+
+
 
 const thoughtSchema = new Schema({
   thoughtText: {
@@ -51,49 +113,6 @@ const Thought = model('Thought', thoughtSchema);
 // Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
 
 // ---
-
-const reactionSchema = new Schema({
-  readtionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Schema.Types.ObjectId()
-  },
-  reactionBody: {
-    type: String,
-    required: true,
-    minlength: 1,
-    maxlength: 280
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: createdAtVal => dateFormat(createdAtVal)
-  }
-}); 
-
-
-// **Reaction** (SCHEMA ONLY)
-
-// * `reactionId`
-//   * Use Mongoose's ObjectId data type
-//   * Default value is set to a new ObjectId
-
-// * `reactionBody`
-//   * String
-//   * Required
-//   * 280 character maximum
-
-// * `username`
-//   * String
-//   * Required
-
-// * `createdAt`
-//   * Date
-//   * Set default value to the current timestamp
-//   * Use a getter method to format the timestamp on query
 
 
 module.exports = Thought;
