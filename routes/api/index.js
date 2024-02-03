@@ -4,7 +4,7 @@ const thoughtRoutes = require('./thoughtRoutes');
 
 const router = express.Router();
 
-router.use('/api/users', userRoutes);
-router.use('/api/thoughts', thoughtRoutes);
+router.use('/users', userRoutes);
+router.use('/thoughts', thoughtRoutes);
 
 module.exports = router;
