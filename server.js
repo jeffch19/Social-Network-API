@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/socialnetworkapi';
 
 app.use(express.json());
-app.use('/api', routes);
+app.use('/', routes);
 
 
 mongoose.connect(MONGO_URI, {
