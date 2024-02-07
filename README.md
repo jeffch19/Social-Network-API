@@ -9,7 +9,7 @@ The following code is an API for a social network web application where users ca
 
 ## Installation
 
-Walkthrough video (in Postman): https://drive.google.com/file/d/1E8HpFgYM2QbCzKCpfyqdVhcT5PPG5-wF/view 
+Walkthrough video (in Postman): https://drive.google.com/file/d/1YQwBA454esmb4pfGi5NdZhB3CjfPy6yj/view
 
 First seed the database by running npm run seed. Then start the server with the node server command in the terminal.
 
