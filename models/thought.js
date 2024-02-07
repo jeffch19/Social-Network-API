@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const dateFormat = (date) => {
  return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
@@ -15,7 +15,7 @@ const dateFormat = (date) => {
 const reactionSchema = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
-    default: () => new Schema.Types.ObjectId()
+    default: () => new Types.ObjectId()
   },
   reactionBody: {
     type: String,
