@@ -44,6 +44,7 @@ const thoughtController = {
  updateThought: async (req, res) => {
     try {
       console.log(`Updating thought with ID: ${req.params.thoughtId}`);
+      console.log(req.body);
       const updatedThought = await Thought.findByIdAndUpdate(req.params.thoughtId, req.body, { new: true });
       if (!updatedThought) {
         console.log('Thought not found');
